@@ -6,22 +6,20 @@
 
 var errors = require('./components/errors');
 
-<<<<<<< HEAD
-
 var Pusher = require('pusher');
 
 var pusher = new Pusher({
   appId: '117333',
   key: '964888bb18b03d72d788',
   secret: '427d14017061b603ec60'
-=======
+});
+
 var braintree = require('braintree');
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
   merchantId: "kptk4xhphjzwm38x",
   publicKey: "vsm3nrfsz89r4x38",
   privateKey: "0d6e2c6ab8a3daca53b2a9ddf92847a1"
->>>>>>> 53bbfc37080de734c0c1e496cd65f192ec5fb900
 });
 
 module.exports = function(app) {
@@ -45,9 +43,9 @@ module.exports = function(app) {
 
   app.get("/new", function(req, res) {
     pusher.trigger('presence-orders', 'new', {
-      "loc": [51.508951065356584, -0.06087561664582353],
-      "order": "1 x Coffee - £20",
-      "id": 1
+      "loc": [req.body.lat, req.body.lon],
+      "order": req.body.order,
+      "id": req.body.order_num
     });
     res.send("Success");
   });
