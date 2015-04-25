@@ -6,8 +6,11 @@ angular.module('parkcafeApp')
       'title': 'Menu',
       'link': '/'
     },{
-      'title': 'Order',
+      'title': 'Product',
       'link': '/product'
+    },{
+      'title': 'Order',
+      'link': '/order'
     }];
 
     $scope.isCollapsed = true;

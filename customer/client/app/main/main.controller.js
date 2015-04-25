@@ -8,10 +8,5 @@ angular.module('parkcafeApp')
       $scope.awesomeThings = awesomeThings;
     });
 
-    $http.get('/client_token').success(function(clientToken) {
-      $scope.clientToken = clientToken;
-      console.log(clientToken);
-    });
-
 
   });
