@@ -69,12 +69,7 @@ module.exports = function(app) {
   app.post("/pusher/auth", function(req, res) {
     var socketId = req.body.socket_id;
     var channel = req.body.channel_name;
-    var presenceData = {
-      user_id: "supplier",
-      user_info: {
-        name: "John Smith"
-      }
-    };
+    var presenceData = {};
     var auth = pusher.authenticate( socketId, channel, presenceData );
     res.send( auth );
   });
