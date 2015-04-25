@@ -57,9 +57,9 @@ module.exports = function(app) {
 
   app.get("/new", function(req, res) {
     pusher.trigger('presence-orders', 'new', {
-      "loc": [51.508951065356584, -0.06087561664582353],
-      "order": "1 x Coffee - £20",
-      "id": 1
+      "loc": [req.body.lat, req.body.lon],
+      "order": req.body.order,
+      "id": req.body.order_num
     });
     res.send("Success");
   });
@@ -68,12 +68,7 @@ module.exports = function(app) {
   app.post("/pusher/auth", function(req, res) {
     var socketId = req.body.socket_id;
     var channel = req.body.channel_name;
-    var presenceData = {
-      user_id: "supplier",
-      user_info: {
-        name: "John Smith"
-      }
-    };
+    var presenceData = {};
     var auth = pusher.authenticate( socketId, channel, presenceData );
     res.send( auth );
   });
