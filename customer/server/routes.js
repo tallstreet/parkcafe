@@ -59,7 +59,7 @@ module.exports = function(app) {
     pusher.trigger('presence-orders', 'new', {
       "loc": [req.body.lat, req.body.lon],
       "order": req.body.order,
-      "id": req.body.order_num
+      "id": req.body.id
     });
     res.send("Success");
   });
