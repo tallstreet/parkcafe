@@ -7,6 +7,7 @@ angular.module('parkcafeApp', [
   'ui.router',
   'ui.bootstrap'
 ])
+  .constant('clientTokenPath', '/path-or-url-to-your-client-token')
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
       .otherwise('/');
