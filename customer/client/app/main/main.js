@@ -7,5 +7,10 @@ angular.module('parkcafeApp')
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
+      })
+      .state('item', {
+        url: '/product',
+        templateUrl: 'app/main/product.html',
+        controller: 'ProductCtrl'
       });
   });
