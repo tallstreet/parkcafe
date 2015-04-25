@@ -55,7 +55,7 @@ module.exports = function(app) {
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 
-  app.get("/new", function(req, res) {
+  app.post("/new", function(req, res) {
     pusher.trigger('presence-orders', 'new', {
       "loc": [req.body.lat, req.body.lon],
       "order": req.body.order,
@@ -68,7 +68,9 @@ module.exports = function(app) {
   app.post("/pusher/auth", function(req, res) {
     var socketId = req.body.socket_id;
     var channel = req.body.channel_name;
-    var presenceData = {};
+    var presenceData = {
+      "user_id": 1
+    };
     var auth = pusher.authenticate( socketId, channel, presenceData );
     res.send( auth );
   });
