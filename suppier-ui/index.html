@@ -21,7 +21,10 @@
         border: 1px solid #999;
       }
     </style>
-
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.7.0/lodash.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//js.pusher.com/2.2/pusher.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATWjTAV4-4GxeqKS4xyOYRgGlFIpVcZu8&v=3.exp&signed_in=true&libraries=visualization"></script>
 
@@ -30,15 +33,54 @@
 var map, pointarray, heatmap;
 var infowindow = new google.maps.InfoWindow({});
 
-var customerData = [
-];
-
+var orders = {};
 
 var heatmap = new google.maps.visualization.HeatmapLayer();
 
 heatmap.set('radius', 20);
 
 heatmap.set('opacity', 0.2);
+
+function addOrder(data) {
+  orders[data.id] = data;
+  redraw();
+};
+
+function redraw()  {
+  points = [];
+  _.each(orders, function(data) {
+
+    points.push(new google.maps.LatLng(data.loc[0], data.loc[1]));
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(data.loc[0], data.loc[1]),
+        map: map,
+        title: data.order,
+        content: data.order,
+        id: data.id
+    });
+
+    data['marker'] = marker;
+
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(marker.getTitle() + "<div><button data-id='" +  marker["id"] + "' class='js-delivered btn btn-default'>Delivered!</button></div>");
+      infowindow.open(map, marker);
+
+
+      $(".js-delivered").click(function() {
+        orders[$(this).data("id")].marker.setMap(null);
+        delete orders[$(this).data("id")];
+        redraw();
+      });
+
+    });
+  });
+
+  var pointArray = new google.maps.MVCArray(points);
+
+  heatmap.setData(pointArray);
+}
 
 
 function initialize() {
@@ -69,28 +111,8 @@ Pusher.log = function(message) {
 };
 
 var pusher = new Pusher('964888bb18b03d72d788');
-var presenceChannel = pusher.subscribe('orders');
-presenceChannel.bind('new', function(data) {
-
-  customerData.push(new google.maps.LatLng(data.loc[0], data.loc[1]));
-
-  var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(data.loc[0], data.loc[1]),
-      map: map,
-      title: data.order,
-      content: data.order
-  });
-
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(marker.getTitle());
-    infowindow.open(map,marker);
-  });
-
-  var pointArray = new google.maps.MVCArray(customerData);
-
-  heatmap.setData(pointArray);
-});
+var channel = pusher.subscribe('orders');
+channel.bind('new', addOrder);
 
 </script>
   </head>
