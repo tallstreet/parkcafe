@@ -3,11 +3,11 @@
 angular.module('parkcafeApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    },{
       'title': 'Menu',
       'link': '/'
+    },{
+      'title': 'Order',
+      'link': '/product'
     }];
 
     $scope.isCollapsed = true;
