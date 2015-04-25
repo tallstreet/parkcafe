@@ -46,6 +46,25 @@ function addOrder(data) {
   redraw();
 };
 
+function deleteOrder(data) {
+  orders[data.id].marker.setMap(null);
+  delete orders[data.id];
+  redraw();
+}
+
+// Enable pusher logging - don't include this in production
+Pusher.log = function(message) {
+  if (window.console && window.console.log) {
+    window.console.log(message);
+  }
+};
+
+var pusher = new Pusher('964888bb18b03d72d788');
+var channel = pusher.subscribe('presence-orders');
+channel.bind('new', addOrder);
+channel.bind('delivered', deleteOrder);
+
+
 function redraw()  {
   points = [];
   _.each(orders, function(data) {
@@ -69,9 +88,7 @@ function redraw()  {
 
 
       $(".js-delivered").click(function() {
-        orders[$(this).data("id")].marker.setMap(null);
-        delete orders[$(this).data("id")];
-        redraw();
+        channel.trigger('delivered', { id: $(this).data("id") });
       });
 
     });
@@ -102,17 +119,6 @@ function toggleHeatmap() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
-// Enable pusher logging - don't include this in production
-Pusher.log = function(message) {
-  if (window.console && window.console.log) {
-    window.console.log(message);
-  }
-};
-
-var pusher = new Pusher('964888bb18b03d72d788');
-var channel = pusher.subscribe('orders');
-channel.bind('new', addOrder);
 
 </script>
   </head>
