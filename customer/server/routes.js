@@ -19,15 +19,30 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/things', require('./api/thing'));
 
-  app.get("/braintree", function (req, res) {
+  app.get("/client_token", function (req, res) {
     console.log("Braintree code");
     gateway.clientToken.generate({
-      customerId: '11111'
+      // customerId: '11111'
     }, function (err, response) {
       console.log(response);
       res.send(response);
     });
   });
+
+  app.post("/purchases", function (req, res) {
+    var nonce = req.body.payment_method_nonce;
+    // Use payment method nonce here
+
+    gateway.transaction.sale({
+      amount: '2.00',
+      paymentMethodNonce: nonce,
+    }, function (err, result) {
+      console.log('Transaction ' + result + ' error code ' + err);
+      res.send(result);
+    });
+  });
+
+
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
