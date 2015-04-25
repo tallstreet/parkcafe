@@ -8,7 +8,7 @@ angular.module('parkcafeApp')
       $scope.awesomeThings = awesomeThings;
     });
 
-    $http.get('/braintree').success(function(clientToken) {
+    $http.get('/client_token').success(function(clientToken) {
       $scope.clientToken = clientToken;
       console.log(clientToken);
     });
