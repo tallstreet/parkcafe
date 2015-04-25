@@ -64,6 +64,12 @@ module.exports = function(app) {
     res.send("Success");
   });
 
+  app.post("/deliver", function(req, res) {
+    pusher.trigger('presence-orders', 'delivered', {
+      "id": req.body.id
+    });
+    res.send("Success");
+  });
 
   app.post("/pusher/auth", function(req, res) {
     var socketId = req.body.socket_id;
