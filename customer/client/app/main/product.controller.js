@@ -17,6 +17,14 @@ angular.module('parkcafeApp')
 
     });
 
+    navigator.geolocation.getCurrentPosition(callback);
+
+    function callback(position) {
+      console.log('located at '+ position.coords.latitude + 'N '+ position.coords.longitude + 'E');
+      $('#lat').val(position.coords.latitude);
+      $('#lon').val(position.coords.longitude);
+    }
+
     $http.get('/client_token').success(function(clientToken) {
       $scope.clientToken = clientToken;
       console.log(clientToken);
@@ -26,6 +34,7 @@ angular.module('parkcafeApp')
       });
       $('#buy').prop('disabled',false);
     });
+
 
     $scope.buy = function(){
       console.log('Buy button pressed');
