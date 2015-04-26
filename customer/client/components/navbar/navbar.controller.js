@@ -8,6 +8,9 @@ angular.module('parkcafeApp')
     },{
       'title': 'Product',
       'link': '/product/1'
+    },{
+      'title': 'Status',
+      'link': '/status'
     }];
 
     $scope.isCollapsed = true;
