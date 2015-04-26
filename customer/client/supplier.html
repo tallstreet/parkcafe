@@ -79,8 +79,8 @@ function redraw()  {
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(data.loc[0], data.loc[1]),
         map: map,
-        title: data.order,
-        content: data.order,
+        title: '£ '+data.amount,
+        content: 'Ice cream',
         id: data.id
     });
 
@@ -88,7 +88,7 @@ function redraw()  {
 
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(marker.getTitle() + "<div><button data-id='" +  marker["id"] + "' class='js-delivered btn btn-default'>Delivered!</button></div>");
+      infowindow.setContent(marker.getTitle() + "<div><button data-id='" +  marker["id"] + "' class='js-delivered btn btn-default'>Delivered</button></div>");
       infowindow.open(map, marker);
 
 
