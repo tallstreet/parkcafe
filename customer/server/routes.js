@@ -109,10 +109,9 @@ module.exports = function(app) {
 
 
   // All other routes should redirect to the index.html
-  app.route('/supplier*')
-    .get(function(req, res) {
-      res.sendfile(app.get('appPath') + '/supplier.html');
-    });
+  app.get('/supplier', function(req, res) {
+    res.sendfile(app.get('appPath') + '/supplier.html');
+  });
 
   // All other routes should redirect to the index.html
   app.route('/*')
