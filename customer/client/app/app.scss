@@ -19,6 +19,9 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
   background-color: #FF1744;
 }
 
+#totalAmount {
+  display: none;
+}
 // Component styles are injected through grunt
 // injector
 @import 'main/main.scss';

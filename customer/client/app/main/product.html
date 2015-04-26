@@ -36,7 +36,7 @@
 
             <label>Total order value: £{{total}}</label>
           </md-input-container>
-          <input type="hidden" name="amount" ng-model="total">
+          <input id="totalAmount" name="amount" ng-model="total">
           <div id="dropin"></div>
           <md-button class="md-button md-accent md-raised btn-lg pull-right" id="buy" type="submit" value="Pay" ng-disabled="!enablePay">Buy</md-button>
 
