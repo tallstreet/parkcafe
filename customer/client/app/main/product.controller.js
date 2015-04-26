@@ -4,7 +4,7 @@ angular.module('parkcafeApp')
   .controller('ProductCtrl', function ($scope, $http, $location) {
     $scope.awesomeThings = [];
     $scope.enablePay = false;
-    $scope.quantity = 0;
+    $scope.total = 0;
 
     $scope.path = $location.path().split('/')[2];
 
@@ -13,7 +13,9 @@ angular.module('parkcafeApp')
 
       angular.forEach(awesomeThings, function(product) {
         if (product.id == $scope.path){
+          $scope.quantity = 1;
           $scope.thisItem = product;
+          $scope.total = $scope.quantity * product.price;
         }
       });
     });
