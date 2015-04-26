@@ -8,3 +8,6 @@ To run client app on localhost,
 `grunt build`
 `grunt serve`
 It will load on http://localhost:9000/
+
+Deployed to 
+https://parkcafe.herokuapp.com

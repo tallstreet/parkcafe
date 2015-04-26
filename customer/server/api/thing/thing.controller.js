@@ -15,22 +15,22 @@ var _ = require('lodash');
 exports.index = function(req, res) {
   res.json([
   {
-    name : 'Ice Creme',
+    name : 'Ice Cream',
     image : 'assets/images/Bitmap 1@2x.png',
     id: 1,
     price: 4.99
   }, {
-    name : 'Ice Coffee',
+    name : 'Iced Coffee',
     image : 'assets/images/Bitmap 2@2x.png',
     id: 2,
     price: 9.99
   }, {
-    name : 'Roast Chicken',
+    name : 'Lamb Chops 32Pcs',
     image : 'assets/images/Bitmap 3@2x.png',
     id: 3,
-    price: 149.99
+    price: 49.99
   },  {
-    name : 'Chilled Beer',
+    name : '1,000 Cans of Chilled Beer',
     image : 'assets/images/Bitmap 4@2x.png',
     id: 4,
     price: 999.99
