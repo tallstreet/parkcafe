@@ -32,24 +32,23 @@ module.exports = function(app) {
       // customerId: '11111'
     }, function (err, response) {
       console.log(response);
-      res.send(response);
+      res.send(response.clientToken);
     });
   });
 
   app.post("/purchases", function (req, res) {
     var nonce = req.body.payment_method_nonce;
     // Use payment method nonce here
-
+    console.log('Purhases called  ')
     gateway.transaction.sale({
       amount: '2.00',
       paymentMethodNonce: nonce,
     }, function (err, result) {
       console.log('Transaction ' + result + ' error code ' + err);
-      res.send(result);
+//      res.send(result);
+      res.redirect('/');
     });
   });
-
-
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

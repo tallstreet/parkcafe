@@ -11,18 +11,18 @@
         <div id="dropin"></div>
         <input type="submit" value="Pay $10">
       </form>
-      <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
-        <md-input-container>
-          <label>Title</label>
-          <input ng-model="user.title">
-        </md-input-container>
-        <md-input-container>
-          <label>Email</label>
-          <input ng-model="user.email" type="email">
-        </md-input-container>
-      </md-content>
 
-      <md-content>
+      Card number: {{cardNumber}}
+      <!-- <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <md-input-container>
+          <label>Card Number</label>
+          <input id="credit-card-number" class="card-field" ng-model="cardNumber">
+        </md-input-container>
+        <md-input-container>
+          <label>Expiration Date</label>
+          <input id="expiration" name="expiration" class="expiration card-field" type="tel" inputmode="numeric" placeholder="Expiration Date" autocomplete="off" ng-model="expirationDate">
+        </md-input-container>
+        <md-button ng-disabled="!buttonVisible" ng-click="buy" ng-href="/product" class="md-accent md-raised btn-lg pull-right">Buy</md-button> -->
         <!-- <braintree-dropin></braintree-dropin> -->
 
         <!-- <form action="/your/server/endpoint" method="post">

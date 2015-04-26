@@ -3,6 +3,7 @@
 angular.module('parkcafeApp')
   .controller('OrderCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
+    $scope.buttonVisible = false;
 
     $scope.buy = function(){
       // do something
@@ -14,8 +15,12 @@ angular.module('parkcafeApp')
       console.log(clientToken);
 
       braintree.setup(clientToken, 'dropin', {
-        container: 'dropin-container'
+        container: 'dropin'
       });
+
+      $scope.buttonVisible = true;
+
+      $scope.cardNumber = angular.element('#credit-card-number').value;
     });
 
   });
