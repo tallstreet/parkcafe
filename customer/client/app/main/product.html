@@ -18,9 +18,10 @@
           <input type="hidden" id="lon" name="lon" value="{{position.longitude}}">
           <input type="hidden" name="order" value="icecream">
           <input type="hidden" name="id" ng-model="thisItem.id">
+          <label for="quantiy">Quantity</label>
           <md-input-container>
 
-            <md-select placeholder="Quantity" ng-model="quantity" ng-change="total=quantity*thisItem.price">
+            <md-select placeholder="Quantity" id="quantity" ng-model="quantity" ng-change="total=quantity*thisItem.price">
               <md-option value="1" selected>1</md-option>
               <md-option value="2">2</md-option>
               <md-option value="3">3</md-option>

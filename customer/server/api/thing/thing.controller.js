@@ -13,18 +13,17 @@ var _ = require('lodash');
 
 // Get list of things
 exports.index = function(req, res) {
-  res.json([
-  {
+  res.json([ {
+    name : 'Hot Coffee',
+    image : 'assets/images/coffee.jpg',
+    id: 2,
+    price: 2.59
+  }, {
     name : 'Ice Cream',
     image : 'assets/images/icecream.jpg',
     id: 1,
     price: 1.99
-  }, {
-    name : 'Iced Coffee',
-    image : 'assets/images/Bitmap 2@2x.png',
-    id: 2,
-    price: 2.59
-  }, {
+  },{
     name : 'Lamb Chops',
     image : 'assets/images/lambchops.jpg',
     id: 3,
