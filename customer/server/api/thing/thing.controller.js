@@ -15,10 +15,10 @@ var _ = require('lodash');
 exports.index = function(req, res) {
   res.json([
   {
-  name : 'Ice Creme',
+  name : 'Ice Cream',
   image : 'assets/images/Bitmap 1@2x.png'
   }, {
-  name : 'Ice Coffee',
+  name : 'Coffee',
   image : 'assets/images/Bitmap 2@2x.png'
   }, {
   name : 'Roast Chicken',
