@@ -21,8 +21,7 @@ angular.module('parkcafeApp')
 
     function callback(position) {
       console.log('located at '+ position.coords.latitude + 'N '+ position.coords.longitude + 'E');
-      $('#lat').val(position.coords.latitude);
-      $('#lon').val(position.coords.longitude);
+      $scope.position = position.coords;
     }
 
     $http.get('/client_token').success(function(clientToken) {
@@ -36,14 +35,5 @@ angular.module('parkcafeApp')
       $('#buy').prop('disabled',false);
       $scope.enablePay = true;
     });
-
-
-    $scope.buy = function(){
-      console.log('Buy button pressed');
-      $http.post('/new', {'lat': 51.5084, 'lon': -0.06087, 'order': 'icecreme', 'id': 3}).success(function(response) {
-        console.log(response);
-      });
-
-    };
 
   });
