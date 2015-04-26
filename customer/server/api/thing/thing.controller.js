@@ -16,7 +16,7 @@ exports.index = function(req, res) {
   res.json([
   {
     name : 'Ice Cream',
-    image : 'assets/images/Bitmap 1@2x.png',
+    image : 'assets/images/icecream.jpg',
     id: 1,
     price: 1.99
   }, {
@@ -26,12 +26,12 @@ exports.index = function(req, res) {
     price: 2.59
   }, {
     name : 'Lamb Chops',
-    image : 'assets/images/Bitmap 3@2x.png',
+    image : 'assets/images/lambchops.jpg',
     id: 3,
     price: 3.99
   },  {
     name : 'Chilled Beer',
-    image : 'assets/images/Bitmap 4@2x.png',
+    image : 'assets/images/beer.jpg',
     id: 4,
     price: 4.99
   }
