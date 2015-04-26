@@ -4,6 +4,7 @@ angular.module('parkcafeApp')
   .controller('ProductCtrl', function ($scope, $http, $location) {
     $scope.awesomeThings = [];
     $scope.enablePay = false;
+    $scope.quantity = 0;
 
     $scope.path = $location.path().split('/')[2];
 
