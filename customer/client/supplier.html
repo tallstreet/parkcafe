@@ -49,7 +49,7 @@ function addOrder(data) {
 
 function deleteOrder(data) {
   orders[data.id].marker.setMap(null);
-  delete orders[data.id];
+  orders[data.id].deleted = true;
   redraw();
 }
 
@@ -73,7 +73,7 @@ channel.bind('delivered', deleteOrder);
 function redraw()  {
   var points = [];
   _.each(orders, function(data) {
-
+    if (data.deleted) return;
     points.push(new google.maps.LatLng(data.loc[0], data.loc[1]));
 
     var marker = new google.maps.Marker({
