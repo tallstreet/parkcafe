@@ -17,19 +17,23 @@ exports.index = function(req, res) {
   {
     name : 'Ice Creme',
     image : 'assets/images/Bitmap 1@2x.png',
-    id: 1
+    id: 1,
+    price: 4.99
   }, {
     name : 'Ice Coffee',
     image : 'assets/images/Bitmap 2@2x.png',
-    id: 2
+    id: 2,
+    price: 9.99
   }, {
     name : 'Roast Chicken',
     image : 'assets/images/Bitmap 3@2x.png',
-    id: 3
+    id: 3,
+    price: 149.99
   },  {
     name : 'Chilled Beer',
     image : 'assets/images/Bitmap 4@2x.png',
-    id: 4
+    id: 4,
+    price: 999.99
   }
   ]);
 };

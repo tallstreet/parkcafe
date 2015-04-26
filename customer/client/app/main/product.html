@@ -1,30 +1,33 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-  <div class="container">
-    <h1>Ice Creme</h1>
-    <p class="lead">Yummm</p>
-  </div>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-xs-12">
+      <div class="container">
+        <h1>{{thisItem.name}}</h1>
+        <p class="lead">Yummm</p>
+      </div>
 
-      <img src="{{thisItem.image}}" width="100%"/><h3>{{thisItem.name}}</h3></a>
+      <img src="{{thisItem.image}}" width="100%"/></a>
     </div>
 
     <div class="col-sm-6 col-xs-12">
       <form id="checkout" method="post" action="/purchases">
-        <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <md-content md-theme="docs-dark" layout-padding layout-sm="column">
           <input type="hidden" id="lat" name="lat" value="51.5084">
           <input type="hidden" id="lon" name="lon" value="-0.06087">
           <input type="hidden" name="order" value="icecream">
           <input type="hidden" name="id" ng-model="thisItem.id">
           <md-input-container>
-            <label>Total order value: £1.79</label>
+            <label>Total order value: £{{thisItem.price}}</label>
           </md-input-container>
-          <input type="hidden" name="amount" value="1.79">
+          <input type="hidden" name="amount" ng-model="this.price">
           <div id="dropin"></div>
-          <input id="buy" type="submit" value="Pay £1.79" disabled>
+          <input class="md-button md-accent md-raised btn-lg pull-right" id="buy" type="submit" value="Pay" ng-disabled="!enablePay">
+
+          <!-- <md-button ng-show="(sumCategory[0]-sumCategory[1]) < 0" ng-click="submitInput(selectedIndex);" ng-href="../as/IEValidate.action" class="md-accent md-raised btn-lg pull-right">Submit</md-button>
+
+          <md-button> -->
         </md-content>
       </form>
     </div>
