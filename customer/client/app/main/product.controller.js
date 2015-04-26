@@ -33,13 +33,4 @@ angular.module('parkcafeApp')
       $('#buy').prop('disabled',false);
     });
 
-
-    $scope.buy = function(){
-      console.log('Buy button pressed');
-      $http.post('/new', {'lat': $scope.position.latitude, 'lon': $scope.position.longitude, 'order': 'icecreme', 'id': 3}).success(function(response) {
-        console.log(response);
-      });
-
-    };
-
   });

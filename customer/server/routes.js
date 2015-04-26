@@ -13,6 +13,8 @@ var pusher = new Pusher({
   secret: '427d14017061b603ec60'
 });
 
+var counter = 0;
+
 var braintree = require('braintree');
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
@@ -72,13 +74,24 @@ module.exports = function(app) {
     pusher.trigger('presence-icecream-orders', 'new', {
       "loc": [51.5093-0.0003+Math.random()*0.0006, -0.06-0.006+Math.random()*0.012],
       "amount": '1.79',
-      "id": 'dummy'
+      "id": counter++
+    });
+    res.send("Success");
+  });
+
+
+
+  app.post("/order", function(req, res) {
+    pusher.trigger('presence-icecream-orders', 'new', {
+      "loc": [req.body.lat, req.body.lon],
+      "order": req.body.order,
+      "id": req.body.id
     });
     res.send("Success");
   });
 
   app.post("/deliver", function(req, res) {
-    pusher.trigger('presence-orders', 'delivered', {
+    pusher.trigger('presence-icecream-orders', 'delivered', {
       "id": req.body.id
     });
     res.send("Success");
