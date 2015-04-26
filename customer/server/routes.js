@@ -55,9 +55,9 @@ module.exports = function(app) {
         pusher.trigger(queue, 'new', {
           "loc": [req.body.lat, req.body.lon],
           "amount": req.body.amount,
-          "id": req.body.id
+          "id": result.transaction.id
         });
-        res.redirect('/status/'+result.transaction.id);
+        res.redirect('/status/' + result.transaction.id);
       } else {
         res.send(result);
       }
@@ -68,11 +68,11 @@ module.exports = function(app) {
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 
-  app.post("/new", function(req, res) {
-    pusher.trigger('presence-orders', 'new', {
-      "loc": [req.body.lat, req.body.lon],
-      "order": req.body.order,
-      "id": req.body.id
+  app.get("/new", function(req, res) {
+    pusher.trigger('presence-icecream-orders', 'new', {
+      "loc": [51.5093-0.0003+Math.random()*0.0006, -0.06-0.006+Math.random()*0.012],
+      "amount": '1.79',
+      "id": 'dummy'
     });
     res.send("Success");
   });
