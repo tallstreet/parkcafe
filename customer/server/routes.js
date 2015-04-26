@@ -84,7 +84,7 @@ module.exports = function(app) {
   app.post("/order", function(req, res) {
     pusher.trigger('presence-icecream-orders', 'new', {
       "loc": [req.body.lat, req.body.lon],
-      "order": req.body.order,
+      "amount": '1.79',
       "id": req.body.id
     });
     res.send("Success");
