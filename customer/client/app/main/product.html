@@ -15,10 +15,10 @@
     <div class="col-sm-6 col-xs-12">
       <form id="checkout" method="post" action="/purchases">
         <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
-          <input type="hidden" name="lat" value="51.5084">
-          <input type="hidden" name="lon" value="-0.06087">
+          <input type="hidden" id="lat" name="lat" value="51.5084">
+          <input type="hidden" id="lon" name="lon" value="-0.06087">
           <input type="hidden" name="order" value="icecream">
-          <input type="hidden" name="id" value="3">
+          <input type="hidden" name="id" ng-model="thisItem.id">
           <md-input-container>
             <label>Total order value: £1.79</label>
           </md-input-container>

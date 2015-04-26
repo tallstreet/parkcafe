@@ -11,7 +11,7 @@ angular.module('parkcafeApp')
     };
 
     
- 
+
     function callback(position) {
       console.log('located at '+ position.coords.latitude + 'N '+ position.coords.longitude + 'E');
       $('#lat').val(position.coords.latitude);
@@ -19,7 +19,7 @@ angular.module('parkcafeApp')
     }
 
     navigator.geolocation.getCurrentPosition(callback);
-    
+
     $http.get('/client_token').success(function(clientToken) {
       $scope.clientToken = clientToken;
       console.log(clientToken);

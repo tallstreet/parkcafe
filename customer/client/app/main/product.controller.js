@@ -14,7 +14,6 @@ angular.module('parkcafeApp')
           $scope.thisItem = product;
         }
       });
-
     });
 
     navigator.geolocation.getCurrentPosition(callback);

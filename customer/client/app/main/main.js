@@ -8,10 +8,10 @@ angular.module('parkcafeApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       })
-      .state('order', {
-        url: '/order',
-        templateUrl: 'app/main/order.html',
-        controller: 'OrderCtrl'
+      .state('status', {
+        url: '/status',
+        templateUrl: 'app/main/status.html',
+        controller: 'StatusCtrl'
       })
       .state('item', {
         url: '/product/:id',
