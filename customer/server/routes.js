@@ -40,11 +40,13 @@ module.exports = function(app) {
     var nonce = req.body.payment_method_nonce;
     gateway.transaction.sale({
       amount: req.body.amount,
-      paymentMethodNonce: nonce,
-      xoptions: {  // Marketplace (US-only at the moment) needed for escrow
+      paymentMethodNonce: nonce
+/*    // Marketplace (US-only at the moment) needed for escrow
+      options: {
         submitForSettlement: true,
         holdInEscrow: true
       }
+*/
     }, function (err, result) {
       console.log('Transaction ' + result + ' error code ' + err);
       if (result.success) {
@@ -55,8 +57,9 @@ module.exports = function(app) {
           "id": req.body.id
         });
         res.redirect('/');
+      } else {
+        res.send(result);
       }
-      res.send(result);
     });
   });
 

@@ -60,7 +60,7 @@ Pusher.log = function(message) {
 };
 
 var pusher = new Pusher('964888bb18b03d72d788');
-var channel = pusher.subscribe('presence-orders');
+var channel = pusher.subscribe('presence-icecream-orders');
 channel.bind('new', addOrder);
 channel.bind('delivered', deleteOrder);
 
