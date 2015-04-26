@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-12 col-xs-12">
       <div class="container">
         <h1>{{thisItem.name}}</h1>
         <p class="lead">Yummm</p>
@@ -11,7 +11,7 @@
       <img src="{{thisItem.image}}" width="100%"/></a>
     </div>
 
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-12 col-xs-12">
       <form id="checkout" method="post" action="/purchases">
         <md-content layout-padding layout-sm="column">
           <input type="hidden" id="lat" name="lat" value="{{position.latitude}}">
