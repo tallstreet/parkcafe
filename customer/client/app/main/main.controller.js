@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('parkcafeApp')
-  .controller('StatusCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {

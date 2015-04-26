@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('parkcafeApp')
-  .controller('OrderCtrl', function ($scope, $http) {
+  .controller('StatusCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
     $scope.buttonVisible = false;
 
@@ -10,7 +10,7 @@ angular.module('parkcafeApp')
       console.log('Button pressed');
     };
 
-    
+
 
     function callback(position) {
       console.log('located at '+ position.coords.latitude + 'N '+ position.coords.longitude + 'E');
