@@ -87,6 +87,18 @@ module.exports = function(app) {
       "amount": '1.79',
       "id": req.body.id
     });
+
+    setTimeout(function() {
+      for (var i = 0; i < 40; i++) {
+        setTimeout(function() {
+          pusher.trigger('presence-icecream-orders', 'new', {
+            "loc": [51.5093-0.0003+Math.random()*0.0006, -0.06-0.006+Math.random()*0.012],
+            "amount": '1.79',
+            "id": counter++
+          });
+        }, 500 + i * (100 - i) + Math.random() * 800);
+      }
+    }, 5000);
     res.send("Success");
   });
 
