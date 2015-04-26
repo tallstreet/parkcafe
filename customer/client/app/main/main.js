@@ -13,6 +13,10 @@ angular.module('parkcafeApp')
         templateUrl: 'app/main/status.html',
         controller: 'StatusCtrl'
       })
+      .state('supplier', {
+        url: '/supplier',
+        templateUrl: 'supplier.html'
+      })
       .state('item', {
         url: '/product/:id',
         templateUrl: 'app/main/product.html',
