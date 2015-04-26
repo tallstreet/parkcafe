@@ -33,6 +33,11 @@ exports.index = function(req, res) {
     image : 'assets/images/beer.jpg',
     id: 4,
     price: 4.99
+  },  {
+    name : 'Charity Donation',
+    image : 'assets/images/charity.gif',
+    id: 4,
+    price: 1.00
   }
   ]);
 };
