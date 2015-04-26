@@ -14,7 +14,7 @@ angular.module('parkcafeApp')
         controller: 'OrderCtrl'
       })
       .state('item', {
-        url: '/product',
+        url: '/product/:id',
         templateUrl: 'app/main/product.html',
         controller: 'ProductCtrl'
       });

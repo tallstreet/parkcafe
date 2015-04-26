@@ -7,10 +7,7 @@ angular.module('parkcafeApp')
       'link': '/'
     },{
       'title': 'Product',
-      'link': '/product'
-    },{
-      'title': 'Order',
-      'link': '/order'
+      'link': '/product/1'
     }];
 
     $scope.isCollapsed = true;
