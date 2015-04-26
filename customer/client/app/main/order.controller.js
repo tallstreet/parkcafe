@@ -6,7 +6,7 @@ angular.module('parkcafeApp')
 
     $scope.buy = function(){
       // do something
-      console.log("Button pressed");
+      console.log('Button pressed');
     };
 
     $http.get('/client_token').success(function(clientToken) {
@@ -14,8 +14,9 @@ angular.module('parkcafeApp')
       console.log(clientToken);
 
       braintree.setup(clientToken, 'dropin', {
-        container: 'dropin-container'
+        container: 'dropin'
       });
+      $('#buy').prop('disabled',false);
     });
 
   });

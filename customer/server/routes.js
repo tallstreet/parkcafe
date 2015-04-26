@@ -32,7 +32,7 @@ module.exports = function(app) {
       // customerId: '11111'
     }, function (err, response) {
       console.log(response);
-      res.send(response);
+      res.send(response.clientToken);
     });
   });
 
