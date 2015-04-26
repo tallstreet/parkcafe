@@ -9,7 +9,7 @@ angular.module('parkcafeApp')
         controller: 'MainCtrl'
       })
       .state('status', {
-        url: '/status',
+        url: '/status/:id',
         templateUrl: 'app/main/status.html',
         controller: 'StatusCtrl'
       })

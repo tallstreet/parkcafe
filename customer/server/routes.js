@@ -49,6 +49,7 @@ module.exports = function(app) {
 */
     }, function (err, result) {
       console.log('Transaction ' + result + ' error code ' + err);
+      console.log(result);
       if (result.success) {
         var queue = 'presence-' + req.body.order + '-orders';
         pusher.trigger(queue, 'new', {
@@ -56,7 +57,7 @@ module.exports = function(app) {
           "amount": req.body.amount,
           "id": req.body.id
         });
-        res.redirect('/');
+        res.redirect('/status/'+result.transaction.id);
       } else {
         res.send(result);
       }
