@@ -107,6 +107,13 @@ module.exports = function(app) {
     res.send( auth );
   });
 
+
+  // All other routes should redirect to the index.html
+  app.route('/supplier*')
+    .get(function(req, res) {
+      res.sendfile(app.get('appPath') + '/supplier.html');
+    });
+
   // All other routes should redirect to the index.html
   app.route('/*')
     .get(function(req, res) {
