@@ -32,7 +32,7 @@
               <md-option value="8">8</md-option>
             </md-select>
 
-            <label>Total order value: £{{total}}</label>
+            <label>Total order value: {{total | currency:"£":2}}</label>
           </md-input-container>
           <input id="totalAmount" name="amount" ng-model="total">
           <div id="dropin"></div>
