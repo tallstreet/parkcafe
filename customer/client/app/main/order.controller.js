@@ -7,7 +7,7 @@ angular.module('parkcafeApp')
 
     $scope.buy = function(){
       // do something
-      console.log("Button pressed");
+      console.log('Button pressed');
     };
 
     $http.get('/client_token').success(function(clientToken) {
@@ -18,9 +18,9 @@ angular.module('parkcafeApp')
         container: 'dropin'
       });
 
-      $scope.buttonVisible = true;
+      // $scope.buttonVisible = true;
 
-      $scope.cardNumber = angular.element('#credit-card-number').value;
+      $('#buy').prop('disabled',false);
     });
 
   });

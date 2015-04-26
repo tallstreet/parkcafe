@@ -1,34 +1,36 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
   <div class="container">
-    <h1>Order Screen</h1>
+    <h1>Checkout</h1>
   </div>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <form id="checkout" method="post" action="/purchases">
-        <div id="dropin"></div>
-        <input type="submit" value="Pay $10">
+        <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+          <input type="hidden" name="lat" value="51.5084">
+          <input type="hidden" name="lon" value="-0.06087">
+          <input type="hidden" name="order" value="icecream">
+          <input type="hidden" name="id" value="3">
+          <md-input-container>
+            <label>Total order value: £1.79</label>
+          </md-input-container>
+          <input type="hidden" name="amount" value="1.79">
+          <div id="dropin"></div>
+          <input id="buy" type="submit" value="Pay £1.79" disabled>
+        </md-content>
       </form>
-
-      Card number: {{cardNumber}}
       <!-- <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
         <md-input-container>
-          <label>Card Number</label>
-          <input id="credit-card-number" class="card-field" ng-model="cardNumber">
+          <label>Title</label>
+          <input ng-model="user.title">
         </md-input-container>
         <md-input-container>
-          <label>Expiration Date</label>
-          <input id="expiration" name="expiration" class="expiration card-field" type="tel" inputmode="numeric" placeholder="Expiration Date" autocomplete="off" ng-model="expirationDate">
+          <label>Email</label>
+          <input ng-model="user.email" type="email">
         </md-input-container>
-        <md-button ng-disabled="!buttonVisible" ng-click="buy" ng-href="/product" class="md-accent md-raised btn-lg pull-right">Buy</md-button> -->
-        <!-- <braintree-dropin></braintree-dropin> -->
-
-        <!-- <form action="/your/server/endpoint" method="post">
-          <div id="dropin-container"></div>
-        </form> -->
-      </md-content>
+      </md-content> -->
     </div>
   </div>
 </div>

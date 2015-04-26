@@ -38,15 +38,28 @@ module.exports = function(app) {
 
   app.post("/purchases", function (req, res) {
     var nonce = req.body.payment_method_nonce;
-    // Use payment method nonce here
-    console.log('Purhases called  ')
     gateway.transaction.sale({
-      amount: '2.00',
-      paymentMethodNonce: nonce,
+      amount: req.body.amount,
+      paymentMethodNonce: nonce
+/*    // Marketplace (US-only at the moment) needed for escrow
+      options: {
+        submitForSettlement: true,
+        holdInEscrow: true
+      }
+*/
     }, function (err, result) {
       console.log('Transaction ' + result + ' error code ' + err);
-//      res.send(result);
-      res.redirect('/');
+      if (result.success) {
+        var queue = 'presence-' + req.body.order + '-orders';
+        pusher.trigger(queue, 'new', {
+          "loc": [req.body.lat, req.body.lon],
+          "amount": req.body.amount,
+          "id": req.body.id
+        });
+        res.redirect('/');
+      } else {
+        res.send(result);
+      }
     });
   });
 

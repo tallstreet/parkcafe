@@ -10,7 +10,6 @@ angular.module('parkcafeApp')
         console.log(response);
       });
 
-      console.log("Button pressed");
     };
 
   });
