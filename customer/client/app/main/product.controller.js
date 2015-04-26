@@ -3,6 +3,8 @@
 angular.module('parkcafeApp')
   .controller('ProductCtrl', function ($scope, $http, $location) {
     $scope.awesomeThings = [];
+    $scope.enablePay = false;
+    $scope.quantity = 0;
 
     $scope.path = $location.path().split('/')[2];
 
@@ -30,7 +32,9 @@ angular.module('parkcafeApp')
       braintree.setup(clientToken, 'dropin', {
         container: 'dropin'
       });
+      $
       $('#buy').prop('disabled',false);
+      $scope.enablePay = true;
     });
 
   });

@@ -9,9 +9,14 @@ angular.module('parkcafeApp', [
   'ngMaterial'
 ])
   .constant('clientTokenPath', '/path-or-url-to-your-client-token')
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $mdThemingProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('light-blue')
+      .accentPalette('orange');
+
   });
