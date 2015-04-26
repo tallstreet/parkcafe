@@ -20,8 +20,8 @@
           <input type="hidden" name="id" ng-model="thisItem.id">
           <md-input-container>
 
-            <md-select placeholder="Quantity" ng-model="quantity">
-              <md-option value="1">1</md-option>
+            <md-select placeholder="Quantity" ng-model="quantity" ng-change="total=quantity*thisItem.price">
+              <md-option value="1" selected>1</md-option>
               <md-option value="2">2</md-option>
               <md-option value="3">3</md-option>
               <md-option value="4">4</md-option>
@@ -34,12 +34,11 @@
               <md-option value="100">100</md-option>
             </md-select>
 
-            <label>Total order value: £{{quantity*thisItem.price}}</label>
+            <label>Total order value: £{{total}}</label>
           </md-input-container>
-          <input type="hidden" name="amount" ng-model="quantity*thisItem.price">
-          {{total}}
+          <input type="hidden" name="amount" ng-model="total">
           <div id="dropin"></div>
-          <input class="md-button md-accent md-raised btn-lg pull-right" id="buy" type="submit" value="Pay" ng-disabled="!enablePay">
+          <md-button class="md-button md-accent md-raised btn-lg pull-right" id="buy" type="submit" value="Pay" ng-disabled="!enablePay">Buy</md-button>
 
           <!-- <md-button ng-show="(sumCategory[0]-sumCategory[1]) < 0" ng-click="submitInput(selectedIndex);" ng-href="../as/IEValidate.action" class="md-accent md-raised btn-lg pull-right">Submit</md-button>
 
